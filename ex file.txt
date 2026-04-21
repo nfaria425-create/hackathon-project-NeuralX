@@ -1,0 +1,56 @@
+I'll update the code so that the welcome message displays the name extracted from the email address entered during login. For example, if you enter "alfiya@example.com", it will show "Welcome back, Alfiya!"
+Action: file_editor str_replace /app/app/page.js --old-str "  const handleLogin = () => {
+    if (email.trim()) {
+      const updatedData = { ...data, user: { ...data.user, email } }
+      localStorage.setItem('mindnest_data', JSON.stringify(updatedData))
+      setData(updatedData)
+      setIsLoggedIn(true)
+    }
+  }" --new-str "  const handleLogin = () => {
+    if (email.trim()) {
+      // Extract name from email (part before @) and capitalize first letter
+      const emailName = email.split('@')[0]
+      const capitalizedName = emailName.charAt(0).toUpperCase() + emailName.slice(1)
+      
+      const updatedData = { 
+        ...data, 
+        user: { 
+          ...data.user, 
+          email,
+          name: capitalizedName
+        } 
+      }
+      localStorage.setItem('mindnest_data', JSON.stringify(updatedData))
+      setData(updatedData)
+      setIsLoggedIn(true)
+    }
+  }"
+Observation: Edit was successful.
+
+Fetching debug logs for nextjs
+
+  - Local:        http://localhost:3000
+  - Network:      http://0.0.0.0:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 2.6s
+ ○ Compiling / ...
+Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ✓ Compiled / in 7.4s (585 modules)
+ GET / 200 in 7660ms
+ ✓ Compiled in 423ms (303 modules)
+ GET /?x_request_source=preview 200 in 119ms
+ ✓ Compiled in 660ms (282 modules)
+ ✓ Compiled in 1079ms (303 modules)
+ GET / 200 in 65ms
+ GET / 200 in 16ms
+ GET / 200 in 22ms
+ GET / 200 in 17ms
+
+
+Fetching debug logs for mongodb
+
+tail: cannot open '/var/log/supervisor/mongodb*.log' for reading: No such file or directory
