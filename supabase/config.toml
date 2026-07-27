@@ -1,0 +1,13 @@
+project_id = "epzlycskkckvqzyjhzzo"
+
+[functions.ai-tutor]
+verify_jwt = true
+
+[functions.generate-planner]
+verify_jwt = true
+
+[functions.quiz-analysis]
+verify_jwt = true
+
+[functions.mock-analysis]
+verify_jwt = true
